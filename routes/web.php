@@ -2,18 +2,20 @@
 
 use App\Todo;
 use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Socialite;
 
 //
+Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('google.login');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/', function () {
-    	$todos = Todo::orderBy('created_at', 'asc')->get();
-
-	return view('todo', [
-		'todos' => $todos
-	]);
-});
+//Route::get('/', function () {
+//    	$todos = Todo::orderBy('created_at', 'asc')->get();
+//
+//	return view('todo', [
+//		'todos' => $todos
+//	]);
+//});
 
 Route::post('/todo', function(Request $request){
 	$validator = Validator::make($request->all(), [
@@ -41,5 +43,3 @@ Route::delete('/todo/{todo}', function(Todo $todo){
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

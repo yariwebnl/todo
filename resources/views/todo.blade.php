@@ -51,95 +51,6 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                height: 100vh;
-                margin: 0;
-            }
-            .todolist {
-                margin-bottom: 2%;
-            }
-
-            #todo-name {
-                margin:t
-            }
-
-            #app2 {
-                margin-top: 25%;
-            }
-
-            .centerform{
-                margin: 0 auto;
-                display: block;
-            }
-            .strikethrough{
-                text-decoration: line-through;
-            }
-
-            .done {
-                visibility: visible;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .floor {
-                margin-bottom: 5%;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-
-            #app3 {
-                width: 70%;
-                margin: 0 auto;
-            }
-
-            .top {
-                margin-top: 10%;
-            }
-
-            .col-sm-6{
-                margin: 0 auto;
-            }
-        </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -148,6 +59,11 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
+                        <?php
+                        if (session()->has('data')){
+                            echo "<a>Welkom, " . session('data')[0] . "</a>";
+                        }
+                        ?>
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
@@ -158,7 +74,6 @@
                 <div id="app2" class="title m-b-md">
                     @{{ message }}
                 </div>
-
                 <h1 id="app1">@{{ message }}</h1>
 
                 @include('common.errors')

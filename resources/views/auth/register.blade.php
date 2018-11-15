@@ -61,6 +61,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="is_google" class="col-md-4 col-form-label text-md-right">{{ __('Google account') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="number" class="form-control{{ $errors->has('is_google') ? ' is-invalid' : '' }}" name="is_google" value="{{ old('is_google') }}" required>
+
+                                @if ($errors->has('is_google'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('is_google') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
